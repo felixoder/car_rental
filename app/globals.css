@@ -3,31 +3,137 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  --blur-bg: rgba(255, 255, 255, 0.6);
+  --blur-bg-dark: rgba(0, 0, 0, 0.6);
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Poppins";
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.navbar,
+.hero {
+  position: relative;
+  z-index: 1;
+}
+
+.blur-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+  background: var(--blur-bg);
+}
+.smooth-blur {
+  background: linear-gradient(180deg, #fff 10.32%, rgba(0, 0, 0, 0) 50.5%);
+  position: absolute;
+}
+.box1-back {
+  border-radius: 15px;
+  background: linear-gradient(0deg, #fff 0%, #e4efff 100%);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+}
+.badge {
+  background: url("../public/badge1.svg");
+}
+.box2-back {
+  border-radius: 15px;
+  background: linear-gradient(180deg, #ffe9e7 0%, #fff 100%);
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+}
+.badge2 {
+  background: url("../public/badge2.svg");
+}
+
+
+.car1{
+  border-radius: 15px;
+background: #FFF;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+background-image: url("../public/small_car1.png");
+}
+.car2{
+  border-radius: 15px;
+background: #FFF;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+background-image: url("../public/small_car2.png");
+}
+.line{
+  color: rgba(255, 255, 255, 0.70);
+text-align: center;
+font-family: Poppins;
+font-size: 36px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+
+}
+.place1{
+  background-image: url("../public/darjeeling.png");
+}
+.place2{
+  background-image: url("../public/dooars.png");
+}
+.place3{
+  background-image: url("../public/sikkim.png");
+}
+
+.rent1{
+  border-radius: 0px 100px 0px 15px;
+background: var(--Primary-Color-2, #F1270F);
+}
+.rent_part1{
+  border-radius: 0px 0px 15px 15px;
+background: var(--Primary-Colour-Blue, #2C6FCC);
+}
+.rent2{
+  border-radius: 0px 100px 0px 15px;
+  background: var(--Primary-Colour-Blue, #2C6FCC);
+}
+.rent_part2{
+  border-radius: 0px 0px 15px 15px;
+  background: var(--Primary-Color-2, #F1270F);
+}
+
+
+.services1{
+  background-image: url("../public/services1.png");
+}
+.services2{
+  background-image: url("../public/services2.png");
+}
+.services3{
+  background-image: url("../public/services3.png");
+}
+
+
+.profile_box{
+  border-radius: 15px;
+background: #FFF;
+box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.10);
+padding: 30px;
+}
+
+
+.bg-rectangle {
+  background-color: #333; /* Adjust as necessary */
+}
+.box1 {
+  background-color: #222; /* Adjust as necessary */
+}
+.bg-header-red {
+  background-color: #e74c3c; /* Adjust as necessary */
+}
+.subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  border-radius: 0 5px 5px 0; /* Rounded right corners */
 }
