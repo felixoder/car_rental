@@ -6,7 +6,7 @@ const AboutSection = () => {
       <div className="text md:mt-10 md:mx-5 md:ml-[372px] ml-5 mr-5 mt-5">
         <p className='text-header-red font-semibold text-2xl'>About Us</p>
         <h1 className='text-3xl font-semibold'>Welcome to Siliguri Car Rental</h1>
-        <p className='text-para-gray font-sm mt-10 mb-10'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p className='text-para-gray font-sm mt-10 mb-10'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <div className="grid grid-cols-2 gap-4">
           <div className="flex flex-col gap-3">
             <div className="flex gap-2">
