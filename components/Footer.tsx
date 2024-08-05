@@ -70,14 +70,14 @@ const Footer = (props: Props) => {
                 <div className="h-[2px] w-[66px] bg-header-red"></div>
                 </div>
                 <div className="flex flex-col gap-5 text-white ">
-                    <Link href='/' className='hover:text-header-red'> › Home</Link>
-                    <Link href='/' className='hover:text-header-red'> › About us</Link>
-                    <Link href='/' className='hover:text-header-red'> › Car Rental</Link>
-                    <Link href='/' className='hover:text-header-red'> › Corporate car Rental</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Destination</Link>
-                    <Link href='/' className='hover:text-header-red'> › Packages</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Service Car</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Contact Us</Link>
+                    <Link href='/' className='hover:text-header-red'>  Home</Link>
+                    <Link href='/' className='hover:text-header-red'>  About us</Link>
+                    <Link href='/' className='hover:text-header-red'>  Car Rental</Link>
+                    <Link href='/' className='hover:text-header-red'>  Corporate car Rental</Link>
+                    <Link href='/' className='hover:text-header-red'>   Destination</Link>
+                    <Link href='/' className='hover:text-header-red'>  Packages</Link>
+                    <Link href='/' className='hover:text-header-red'>   Service Car</Link>
+                    <Link href='/' className='hover:text-header-red'>   Contact Us</Link>
                 </div>
                 </div>
             </div>
@@ -88,14 +88,14 @@ const Footer = (props: Props) => {
                 <div className="h-[2px] w-[66px] bg-header-red"></div>
                 </div>
                 <div className="flex flex-col gap-5 text-white">
-                    <Link href='/' className='hover:text-header-red'> › Home</Link>
-                    <Link href='/' className='hover:text-header-red'> › About us</Link>
-                    <Link href='/' className='hover:text-header-red'> › Car Rental</Link>
-                    <Link href='/' className='hover:text-header-red'> › Corporate car Rental</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Destination</Link>
-                    <Link href='/' className='hover:text-header-red'> › Packages</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Service Car</Link>
-                    <Link href='/' className='hover:text-header-red'> ›  Contact Us</Link>
+                    <Link href='/' className='hover:text-header-red'>  Home</Link>
+                    <Link href='/' className='hover:text-header-red'>  About us</Link>
+                    <Link href='/' className='hover:text-header-red'>  Car Rental</Link>
+                    <Link href='/' className='hover:text-header-red'>  Corporate car Rental</Link>
+                    <Link href='/' className='hover:text-header-red'>   Destination</Link>
+                    <Link href='/' className='hover:text-header-red'>  Packages</Link>
+                    <Link href='/' className='hover:text-header-red'>   Service Car</Link>
+                    <Link href='/' className='hover:text-header-red'>   Contact Us</Link>
                 </div>
                 </div>
             </div>
@@ -106,14 +106,14 @@ const Footer = (props: Props) => {
                 <div className="h-[2px] w-[66px] bg-header-red"></div>
                 </div>
                 <div className="flex flex-col gap-5 text-white">
-                    <Link href='/' className='hover:text-header-red' > › Home</Link>
-                    <Link href='/' className='hover:text-header-red' > › About us</Link>
-                    <Link href='/' className='hover:text-header-red' > › Car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > › Corporate car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > ›  Destination</Link>
-                    <Link href='/' className='hover:text-header-red' > › Packages</Link>
-                    <Link href='/' className='hover:text-header-red' > ›  Service Car</Link>
-                    <Link href='/' className='hover:text-header-red' > ›  Contact Us</Link>
+                    <Link href='/' className='hover:text-header-red' >  Home</Link>
+                    <Link href='/' className='hover:text-header-red' >  About us</Link>
+                    <Link href='/' className='hover:text-header-red' >  Car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >  Corporate car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >   Destination</Link>
+                    <Link href='/' className='hover:text-header-red' >  Packages</Link>
+                    <Link href='/' className='hover:text-header-red' >   Service Car</Link>
+                    <Link href='/' className='hover:text-header-red' >   Contact Us</Link>
                 </div>
                 </div>
             </div>
@@ -129,11 +129,11 @@ const Footer = (props: Props) => {
                 <div className="h-[2px] w-[66px] bg-header-red"></div>
                 </div>
                 <div className="flex flex-col gap-5 text-white">
-                    <Link href='/' className='hover:text-header-red' > › Home</Link>
-                    <Link href='/' className='hover:text-header-red' > › About us</Link>
-                    <Link href='/' className='hover:text-header-red' > › Car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > › Corporate car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > ›  Destination</Link>
+                    <Link href='/' className='hover:text-header-red' >  Home</Link>
+                    <Link href='/' className='hover:text-header-red' >  About us</Link>
+                    <Link href='/' className='hover:text-header-red' >  Car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >  Corporate car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >   Destination</Link>
                     
                 </div>
                 </div>
@@ -145,11 +145,11 @@ const Footer = (props: Props) => {
                 <div className="h-[2px] w-[66px] bg-header-red"></div>
                 </div>
                 <div className="flex flex-col gap-5 text-white">
-                    <Link href='/' className='hover:text-header-red' > › Home</Link>
-                    <Link href='/' className='hover:text-header-red' > › About us</Link>
-                    <Link href='/' className='hover:text-header-red' > › Car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > › Corporate car Rental</Link>
-                    <Link href='/' className='hover:text-header-red' > ›  Destination</Link>
+                    <Link href='/' className='hover:text-header-red' >  Home</Link>
+                    <Link href='/' className='hover:text-header-red' >  About us</Link>
+                    <Link href='/' className='hover:text-header-red' >  Car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >  Corporate car Rental</Link>
+                    <Link href='/' className='hover:text-header-red' >   Destination</Link>
                     
                 </div>
                 </div>
