@@ -24,7 +24,7 @@ const FeedbackSection = (props: Props) => {
             <div className="flex flex-col p[20px] mt-5">
               <h1 className='font-semibold text-xl'>Wagon R Motors</h1>
               <p className='text-para-gray'>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type.
+                Lorem Ipsum&apos;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type.
               </p>
             </div>
           </div>
