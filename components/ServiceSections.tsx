@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import useIsClient from './useIsClient';
 
 type Props = {}
 
@@ -17,6 +18,11 @@ const placesData = [
 ];
 
 const ServiceSections = (props: Props) => {
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

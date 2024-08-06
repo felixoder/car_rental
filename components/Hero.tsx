@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import useIsClient from "@/components/useIsClient";
 
 const heroImages = [
   "./hero.png",
@@ -8,6 +9,11 @@ const heroImages = [
 ];
 
 const Hero: React.FC = () => {
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   const [currentImage, setCurrentImage] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const totalImages = heroImages.length;

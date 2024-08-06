@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import useIsClient from './useIsClient';
 
 const boxData = [
   {
@@ -91,6 +92,11 @@ const boxData = [
 ];
 
 const BoxContent = () => {
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isMouseOver, setIsMouseOver] = useState(false);

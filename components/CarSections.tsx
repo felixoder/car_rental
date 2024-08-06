@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import useIsClient from './useIsClient';
 
 const carData = [
   { id: 1, imgSrc: "./test_car1.png", title: "Dzire Swift Red", price: "₹15,000" },
@@ -14,6 +15,11 @@ const carData = [
 ];
 
 const CarSections = () => {
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true);

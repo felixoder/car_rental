@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import useIsClient from './useIsClient';
 
 const offeringsData = [
   { src: "/small_car1.png", alt: "Car 1", bgClass: "bg-header-red" },
@@ -14,6 +15,11 @@ const offeringsData = [
 ];
 
 const Offerings = () => {
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
