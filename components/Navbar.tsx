@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import RightAngleTriangle from "./RightAngleTriangle";
 
 type Props = {};
 
@@ -24,7 +23,7 @@ const Navbar = (props: Props) => {
   }, []);
 
   return (
-    <div className="">
+    <div>
       {/* Red and White Header Part */}
       <div className="relative">
         <div className="relative h-[50px] flex bg-header-red justify-around rounded-br-[2rem] md:rounded-br-[4rem]">
