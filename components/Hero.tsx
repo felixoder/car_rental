@@ -1,42 +1,65 @@
-import Link from 'next/link';
-import React from 'react';
+"use client";
+import React, { useState, useEffect } from 'react';
+
+const heroImages = [
+  "./hero.png",
+  "./banner2.jpg",
+  "./banner3.jpg"
+];
 
 const Hero: React.FC = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+  const [isMouseOver, setIsMouseOver] = useState(false);
+  const totalImages = heroImages.length;
+
+  const handleNextImage = () => {
+    setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
+  };
+
+  const handlePrevImage = () => {
+    setCurrentImage((prevImage) => (prevImage - 1 + totalImages) % totalImages);
+  };
+
+  useEffect(() => {
+    if (!isMouseOver) {
+      const interval = setInterval(() => {
+        setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isMouseOver, totalImages]);
+
   return (
-    <div className="relative w-full h-[300px] md:h-[564px]">
-      <div className="absolute top-0 left-0 w-full  h-[100px] md:h-full">
-        <img src="/hero.png" alt="hero" className="h-[300px] w-full md:h-[564px] object-cover" />
-        <div className="hidden md:absolute top-0 left-0 w-full md:h-[300px] bg-gradient-to-b from-white/100 to-transparent"></div>
+    <div 
+      className="relative w-full h-[300px] md:h-[564px]"
+      onMouseEnter={() => setIsMouseOver(true)}
+      onMouseLeave={() => setIsMouseOver(false)}
+    >
+      <div className="absolute top-0 left-0 w-full h-full">
+        <img 
+          src={heroImages[currentImage]} 
+          alt="hero" 
+          className="h-full w-full object-cover z-1 transition-opacity duration-1000 ease-in-out" 
+          style={{ opacity: 1, transition: 'opacity 1s ease-in-out' }} 
+        />
+        <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-white/100 to-transparent md:h-[300px]"></div>
       </div>
-      <div className="absolute bg-gradient-to-b from-white/100 to-transparent top-0 left-0 w-full h-[100px] md:h-[300px] md:bg-gradient-to-b md:from-white/100 md:to-transparent"></div>
-      <div className="gap-[10px] relative z-10 flex justify-center items-center md:gap-[50px] h-[50px] mt-3  bg-transparent">
-     
-        {/* logo */}
-        <img src="/logo.svg" className="w-[73px] h-[40px]" alt="logo" />
-        <Link href="/" className="text-xs md:text-black md:text-xl font-semibold hover:text-header-red ">
-          HOME
-        </Link>
-        <Link href="/" className="text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          ABOUT US
-        </Link>
-        <Link href="/" className="text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          WHY US
-        </Link>
-        <Link href="/" className="text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          CAR RENTAL
-        </Link>
-        <Link href="/" className="hidden md:block text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          TOUR PACKAGES
-        </Link>
-        <Link href="/" className="hidden md:block text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          CORPORATE BOOKING
-        </Link>
-        <Link href="/" className="hidden md:block text-xs md:text-black md:text-xl font-semibold hover:text-header-red">
-          CONTACT
-        </Link>
-        <button className="hidden md:block bg-header-red text-white text-sm font-bold w-[130px] h-[35px] rounded-xl">
-          GET A QUOTE
+      <div className="absolute inset-0 flex justify-between items-center px-4 md:px-10">
+        <button onClick={handlePrevImage} className="bg-white/50 hover:bg-white/70 p-2 rounded-full">
+          <img src="/arrow-left.svg" alt="Previous" />
         </button>
+        <button onClick={handleNextImage} className="bg-white/50 hover:bg-white/70 p-2 rounded-full">
+          <img src="/arrow-right.svg" alt="Next" />
+        </button>
+      </div>
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {heroImages.map((_, index) => (
+          <div
+            key={index}
+            className={`w-3 h-3 rounded-full cursor-pointer ${currentImage === index ? 'bg-red-500' : 'bg-white/50'}`}
+            onClick={() => setCurrentImage(index)}
+          ></div>
+        ))}
       </div>
     </div>
   );

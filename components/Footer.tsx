@@ -30,8 +30,8 @@ const Footer = (props: Props) => {
             </div>
         </div>
 
-<div className='hidden md:flex md:flex-col'>
-        <div className="grid grid-cols-4">
+<div className='hidden md:flex md:flex-col justify-center items-center'>
+        <div className="grid grid-cols-2">
             <div className="flex flex-col justify-center items-center">
             <img src="./logo.svg" alt="logo" className='w-[228.38px] h-[163px]' />
             <div className="flex flex-col  gap-1 ">
@@ -63,7 +63,11 @@ const Footer = (props: Props) => {
             </div>
          
             </div>
-            <div className="flex flex-col">
+
+            <div className="flex gap-5 justify-end mr-10">
+
+        
+            <div className="flex flex-col justify-end items-center">
                 <div className="">
                 <div className="flex gap-2  items-center mb-5">
                 <h1 className='text-xl font-bold text-white'>Our Services</h1>
@@ -117,11 +121,13 @@ const Footer = (props: Props) => {
                 </div>
                 </div>
             </div>
+            </div>
            
 
         </div>
         <div className="h-[1px] w-[1164px] bg-white mx-auto mt-9"></div>
-        <div className="grid grid-cols-3 ml-10 mt-7">
+        <div className="grid grid-cols-2 ml-10 mt-7 gap-10">
+            <div className="flex gap-10">
         <div className="flex flex-col">
                 <div className="">
                 <div className="flex gap-2  items-center mb-5">
@@ -153,6 +159,7 @@ const Footer = (props: Props) => {
                     
                 </div>
                 </div>
+            </div>
             </div>
             <div className="">
     <div className='bg-rectangle_color h-[179px] w-[471px] rounded-xl'></div>

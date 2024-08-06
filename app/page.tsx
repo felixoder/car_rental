@@ -16,18 +16,14 @@ const page = (props: Props) => {
     <div>
       <Hero/>
       <BoxContent/>
-      <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
      <AboutSection/>
     <Offerings/>
-    <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
     <Places/>
-    <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
     <CarSections/>
-    <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
     <ServiceSections/>
-    <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
     <FeedbackSection/>
-    <img src="./pagination.svg" className='mx-auto mt-5' alt="" />
+    <br />
+    <br />
     
     </div>
 
