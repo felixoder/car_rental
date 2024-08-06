@@ -1,3 +1,4 @@
+"use client";
 import Hero from '@/components/Hero'
 import React, { useEffect, useState } from 'react'
 import "@/app/globals.css"
