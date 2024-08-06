@@ -23,17 +23,17 @@ const Hero: React.FC = () => {
   };
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+  
   useEffect(() => {
+    if(isClient){
     if (!isMouseOver) {
       const interval = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [isMouseOver, totalImages]);
+  }
+  }, [isMouseOver, totalImages,isClient]);
 
   return (
     <div 

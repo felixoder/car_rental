@@ -88,11 +88,11 @@ const FeedbackSection = (props: Props) => {
 
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
-
+  
   useEffect(() => {
+    if(isClient){
+
+  
     const handleResize = () => setWindowWidth(window.innerWidth);
     
     handleResize(); // Initialize width on mount
@@ -101,7 +101,8 @@ const FeedbackSection = (props: Props) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }
+  }, [isClient]);
 
   const feedbacksPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(feedbackData.length / feedbacksPerPage);

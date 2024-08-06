@@ -23,16 +23,16 @@ const Offerings = () => {
   // Handle window resize events
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+ 
   useEffect(() => {
+    if(isClient){
     const handleResize = () => setWindowWidth(window.innerWidth);
 
     handleResize(); // Initialize width on mount
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   const itemsPerPage = windowWidth < 768 ? 1 : 3;

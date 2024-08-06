@@ -21,18 +21,18 @@ const CarSections = () => {
   const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true);
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+  
   // Handle window resize events
   useEffect(() => {
+    if(isClient){
     const handleResize = () => setWindowWidth(window.innerWidth);
 
     handleResize(); // Initialize width on mount
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    }
+  }, [isClient]);
 
   const carsPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(carData.length / carsPerPage);

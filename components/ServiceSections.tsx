@@ -23,18 +23,18 @@ const ServiceSections = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+ 
   // Handle window resize events
   useEffect(() => {
+    if(isClient){
     const handleResize = () => setWindowWidth(window.innerWidth);
 
     handleResize(); // Initialize width on mount
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+    }
+  }, [isClient]);
 
   const placesPerPage = windowWidth < 768 ? 1 : 3; // Show 1 place per page on small screens, 3 on larger screens
   const totalPages = Math.ceil(placesData.length / placesPerPage);

@@ -98,17 +98,18 @@ const BoxContent = () => {
   const [isMouseOver, setIsMouseOver] = useState(false);
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+ 
   useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    if(isClient){
+      const handleResize = () => setWindowWidth(window.innerWidth);
 
-    handleResize(); // Initialize width on mount
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+      handleResize(); // Initialize width on mount
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+  
+  }, [isClient]);
 
   const boxesPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(boxData.length / boxesPerPage);
