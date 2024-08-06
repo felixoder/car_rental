@@ -81,21 +81,21 @@ const feedbackData = [
 
 const FeedbackSection = (props: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [isMouseOver, setIsMouseOver] = useState(false); // State to track mouse over status
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    
+    handleResize(); // Initialize width on mount
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  const feedbacksPerPage = windowWidth < 768 ? 1 : 3; // Show 1 feedback per page on small screens, 3 on larger screens
+  const feedbacksPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(feedbackData.length / feedbacksPerPage);
 
   const handlePrevPage = () => {

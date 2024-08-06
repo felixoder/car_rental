@@ -92,18 +92,16 @@ const boxData = [
 
 const BoxContent = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    handleResize(); // Initialize width on mount
+
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const boxesPerPage = windowWidth < 768 ? 1 : 3;
@@ -121,7 +119,7 @@ const BoxContent = () => {
     }
   };
 
-  const goToPage = (pageNumber: React.SetStateAction<number>) => {
+  const goToPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
 
@@ -131,7 +129,7 @@ const BoxContent = () => {
   useEffect(() => {
     if (!isMouseOver) {
       const interval = setInterval(() => {
-        setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : 1));
+        setCurrentPage(prevPage => (prevPage < totalPages ? prevPage + 1 : 1));
       }, 2000);
       return () => clearInterval(interval);
     }

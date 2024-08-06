@@ -7,15 +7,12 @@ const placesData = [
   { name: "Hotel Name", className: "services1" },
   { name: "Hotel Name UP", className: "services2" },
   { name: "Hotel Name IN", className: "services3" },
-
   { name: "Hotel Name", className: "services1" },
   { name: "Hotel Name IN", className: "services1" },
   { name: "Hotel Name UP", className: "services2" },
   { name: "Hotel Name IN", className: "services3" },
   { name: "Hotel Name", className: "services1" },
-  
   { name: "Hotel Name UP", className: "services3" },
-
   // Add more places if needed
 ];
 
@@ -23,15 +20,14 @@ const ServiceSections = (props: Props) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
+  // Handle window resize events
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    handleResize(); // Initialize width on mount
+
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const placesPerPage = windowWidth < 768 ? 1 : 3; // Show 1 place per page on small screens, 3 on larger screens
@@ -45,6 +41,7 @@ const ServiceSections = (props: Props) => {
     setCurrentPage(prevPage => (prevPage < totalPages ? prevPage + 1 : 1));
   };
 
+  // Auto-pagination effect
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentPage(prevPage => (prevPage < totalPages ? prevPage + 1 : 1));
@@ -62,7 +59,7 @@ const ServiceSections = (props: Props) => {
         <p className="text-sm font-bold text-header-red">See Our Siliguri Car Rental</p>
         <h1 className="text-3xl font-semibold">Tour Packages</h1>
       </div>
-      <div className="mt-5  md:mt-10 flex justify-center items-center relative">
+      <div className="mt-5 md:mt-10 flex justify-center items-center relative">
         <img 
           src="/arrow-left.svg" 
           className='left-5 md:mr-2 top-1/2 transform -translate-y-1/2 cursor-pointer w-8 h-8 md:w-10 md:h-10' 

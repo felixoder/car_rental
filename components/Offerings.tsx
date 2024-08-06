@@ -15,18 +15,17 @@ const offeringsData = [
 
 const Offerings = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
+  // Handle window resize events
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    handleResize(); // Initialize width on mount
+
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const itemsPerPage = windowWidth < 768 ? 1 : 3;

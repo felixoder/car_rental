@@ -15,55 +15,49 @@ const carData = [
 
 const CarSections = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true); // Auto-pagination state
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true);
 
   // Handle window resize events
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
   useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    handleResize(); // Initialize width on mount
+
     window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const carsPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(carData.length / carsPerPage);
 
-  // Change page to previous
   const handlePrevPage = () => {
     setCurrentPage(prevPage => (prevPage > 1 ? prevPage - 1 : totalPages));
-    setAutoPaginationEnabled(false); // Disable auto-pagination on manual page change
+    setAutoPaginationEnabled(false);
   };
 
-  // Change page to next
   const handleNextPage = () => {
     setCurrentPage(prevPage => (prevPage < totalPages ? prevPage + 1 : 1));
-    setAutoPaginationEnabled(false); // Disable auto-pagination on manual page change
+    setAutoPaginationEnabled(false);
   };
 
-  // Go to a specific page
   const goToPage = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    setAutoPaginationEnabled(false); // Disable auto-pagination on manual page change
+    setAutoPaginationEnabled(false);
   };
 
   const startIndex = (currentPage - 1) * carsPerPage;
   const selectedCars = carData.slice(startIndex, startIndex + carsPerPage);
 
-  // Auto-pagination effect
   useEffect(() => {
     if (autoPaginationEnabled) {
       const interval = setInterval(() => {
         handleNextPage();
-      }, 2000); // Change page every 2 seconds
+      }, 2000);
 
       return () => clearInterval(interval);
     }
-  }, [autoPaginationEnabled, currentPage, totalPages]); // Ensure dependencies are correctly set
+  }, [autoPaginationEnabled, currentPage, totalPages]);
 
   return (
     <div className='mt-5 md:mt-10 flex flex-col justify-center items-center'>
