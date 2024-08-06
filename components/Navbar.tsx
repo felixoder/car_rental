@@ -9,11 +9,10 @@ const Navbar = (props: Props) => {
   const [isSticky, setIsSticky] = useState(false);
   const isClient = useIsClient();
 
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+ 
 
   useEffect(() => {
+    if(isClient){
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setIsSticky(true);
@@ -26,7 +25,8 @@ const Navbar = (props: Props) => {
 
     // Clean up the event listener
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }
+  }, [isClient]);
 
   return (
     <div>
