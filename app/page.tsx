@@ -12,7 +12,7 @@ import useIsClient from '@/components/useIsClient'
 
 type Props = {}
 
-const page = (props: Props) => {
+const Page = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const isClient = useIsClient();
 
@@ -24,27 +24,26 @@ const page = (props: Props) => {
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
-    else{
-      <p>loading...</p>
-    }
   }, [isClient]);
+
+  if (!isClient) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div>
-      <Hero/>
-      <BoxContent/>
-     <AboutSection/>
-    <Offerings/>
-    <Places/>
-    <CarSections/>
-    <ServiceSections/>
-    <FeedbackSection/>
-    <br />
-    <br />
-    
+      <Hero />
+      <BoxContent />
+      <AboutSection />
+      <Offerings />
+      <Places />
+      <CarSections />
+      <ServiceSections />
+      <FeedbackSection />
+      <br />
+      <br />
     </div>
-
-    
-  )
+  );
 }
 
-export default page
+export default Page;
