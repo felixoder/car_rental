@@ -7,25 +7,26 @@ type Props = {};
 
 const Navbar = (props: Props) => {
   const [isSticky, setIsSticky] = useState(false);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
   const isClient = useIsClient();
 
  
 
+
   useEffect(() => {
-    if(isClient){
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
-    };
+    if (isClient) {
+      const handleScroll = () => {
+        if (window.scrollY > 50) {
+          setIsSticky(true);
+        } else {
+          setIsSticky(false);
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
 
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener
-    return () => window.removeEventListener("scroll", handleScroll);
-  }
+      // Clean up the event listener
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, [isClient]);
 
   return (

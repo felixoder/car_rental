@@ -15,25 +15,20 @@ const offeringsData = [
 ];
 
 const Offerings = () => {
-  
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  // Handle window resize events
   const isClient = useIsClient();
 
- 
   useEffect(() => {
-    if(isClient){
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    if (isClient) {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      handleResize(); // Initialize width on mount
 
-    handleResize(); // Initialize width on mount
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
-  }, []);
+  }, [isClient]);
 
   const itemsPerPage = windowWidth < 768 ? 1 : 3;
   const totalPages = Math.ceil(offeringsData.length / itemsPerPage);
@@ -54,7 +49,6 @@ const Offerings = () => {
       const interval = setInterval(() => {
         handleNextPage();
       }, 2000);
-
       return () => clearInterval(interval);
     }
   }, [hoveredIndex, currentPage, totalPages]);

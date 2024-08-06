@@ -90,18 +90,13 @@ const FeedbackSection = (props: Props) => {
 
   
   useEffect(() => {
-    if(isClient){
+    if (isClient) {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      handleResize(); // Initialize width on mount
 
-  
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    
-    handleResize(); // Initialize width on mount
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
   }, [isClient]);
 
   const feedbacksPerPage = windowWidth < 768 ? 1 : 3;

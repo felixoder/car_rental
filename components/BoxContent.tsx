@@ -90,25 +90,20 @@ const boxData = [
 
   // Add more boxes as needed
 ];
-
 const BoxContent = () => {
-  
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const isClient = useIsClient();
 
- 
   useEffect(() => {
-    if(isClient){
+    if (isClient) {
       const handleResize = () => setWindowWidth(window.innerWidth);
-
       handleResize(); // Initialize width on mount
-  
+
       window.addEventListener("resize", handleResize);
       return () => window.removeEventListener("resize", handleResize);
     }
-  
   }, [isClient]);
 
   const boxesPerPage = windowWidth < 768 ? 1 : 3;
@@ -134,38 +129,38 @@ const BoxContent = () => {
   const selectedBoxes = boxData.slice(startIndex, startIndex + boxesPerPage);
 
   useEffect(() => {
-    if (!isMouseOver) {
+    if (!isMouseOver && isClient) {
       const interval = setInterval(() => {
         setCurrentPage(prevPage => (prevPage < totalPages ? prevPage + 1 : 1));
       }, 2000);
       return () => clearInterval(interval);
     }
-  }, [isMouseOver, totalPages]);
+  }, [isMouseOver, totalPages, isClient]);
 
   return (
     <div className="flex flex-col items-center mt-5 px-5 md:px-10 md:mt-10">
-      <div 
+      <div
         className="flex justify-center md:justify-between items-center"
         onMouseEnter={() => setIsMouseOver(true)}
         onMouseLeave={() => setIsMouseOver(false)}
       >
-        <img src="/arrow-left.svg" className='hidden md:block cursor-pointer' alt="Left Arrow" onClick={handlePrevPage} />
+        <img src="/arrow-left.svg" className="hidden md:block cursor-pointer" alt="Left Arrow" onClick={handlePrevPage} />
         <div className="boxes flex flex-row md:flex-col justify-center items-center overflow-x-auto md:grid md:grid-cols-3 gap-8 mx-auto md:mx-0">
           {selectedBoxes.map((box, index) => (
             <div key={index} className={`${box.className} w-[300px] md:w-[372px] h-[210px] flex flex-col justify-center items-center flex-shrink-0`}>
               <div className="flex justify-center items-center gap-5">
-                <img src={box.img1} className='w-[33px]' alt={`Image 1 - ${index + 1}`} />
-                <h1 className='text-3xl font-semibold'>{box.title1}</h1>
-                <img src={box.img2} alt={`Image 2 - ${index + 1}`} className='w-[33px]'/>
+                <img src={box.img1} className="w-[33px]" alt={`Image 1 - ${index + 1}`} />
+                <h1 className="text-3xl font-semibold">{box.title1}</h1>
+                <img src={box.img2} alt={`Image 2 - ${index + 1}`} className="w-[33px]" />
               </div>
               <div>
-                <h1 className='text-3xl font-semibold'>{box.title2}</h1>
+                <h1 className="text-3xl font-semibold">{box.title2}</h1>
               </div>
-              <h1 className='badge w-[131.111px] h-[21px] text-center text-white font-medium mt-20'>BOOK NOW</h1>
+              <h1 className="badge w-[131.111px] h-[21px] text-center text-white font-medium mt-20">BOOK NOW</h1>
             </div>
           ))}
         </div>
-        <img src="/arrow-right.svg" className='hidden md:block cursor-pointer' alt="Right Arrow" onClick={handleNextPage} />
+        <img src="/arrow-right.svg" className="hidden md:block cursor-pointer" alt="Right Arrow" onClick={handleNextPage} />
       </div>
       <div className="flex justify-center mt-5 gap-2">
         {Array.from({ length: totalPages }, (_, index) => (
@@ -181,6 +176,6 @@ const BoxContent = () => {
       </div>
     </div>
   );
-}
+};
 
 export default BoxContent;

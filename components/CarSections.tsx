@@ -24,13 +24,12 @@ const CarSections = () => {
   
   // Handle window resize events
   useEffect(() => {
-    if(isClient){
-    const handleResize = () => setWindowWidth(window.innerWidth);
+    if (isClient) {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      handleResize(); // Initialize width on mount
 
-    handleResize(); // Initialize width on mount
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
     }
   }, [isClient]);
 

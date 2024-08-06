@@ -9,10 +9,10 @@ const heroImages = [
 ];
 
 const Hero: React.FC = () => {
-  
   const [currentImage, setCurrentImage] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const totalImages = heroImages.length;
+  const isClient = useIsClient();
 
   const handleNextImage = () => {
     setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
@@ -21,19 +21,15 @@ const Hero: React.FC = () => {
   const handlePrevImage = () => {
     setCurrentImage((prevImage) => (prevImage - 1 + totalImages) % totalImages);
   };
-  const isClient = useIsClient();
 
-  
   useEffect(() => {
-    if(isClient){
-    if (!isMouseOver) {
+    if (isClient && !isMouseOver) {
       const interval = setInterval(() => {
         setCurrentImage((prevImage) => (prevImage + 1) % totalImages);
       }, 3000);
       return () => clearInterval(interval);
     }
-  }
-  }, [isMouseOver, totalImages,isClient]);
+  }, [isMouseOver, totalImages, isClient]);
 
   return (
     <div 
