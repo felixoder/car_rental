@@ -1,11 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import useIsClient from "./useIsClient";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
   const [isSticky, setIsSticky] = useState(false);
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
 
   useEffect(() => {
     const handleScroll = () => {

@@ -15,16 +15,17 @@ const offeringsData = [
 ];
 
 const Offerings = () => {
-  const isClient = useIsClient();
-
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [windowWidth, setWindowWidth] = useState<number>(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Handle window resize events
+  const isClient = useIsClient();
+
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
 

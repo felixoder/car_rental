@@ -9,11 +9,7 @@ const heroImages = [
 ];
 
 const Hero: React.FC = () => {
-  const isClient = useIsClient();
-
-  if (!isClient) {
-    return null; // or a loading indicator
-  }
+  
   const [currentImage, setCurrentImage] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
   const totalImages = heroImages.length;
@@ -25,7 +21,11 @@ const Hero: React.FC = () => {
   const handlePrevImage = () => {
     setCurrentImage((prevImage) => (prevImage - 1 + totalImages) % totalImages);
   };
+  const isClient = useIsClient();
 
+  if (!isClient) {
+    return null; // or a loading indicator
+  }
   useEffect(() => {
     if (!isMouseOver) {
       const interval = setInterval(() => {

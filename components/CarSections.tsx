@@ -15,15 +15,15 @@ const carData = [
 ];
 
 const CarSections = () => {
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [windowWidth, setWindowWidth] = useState<number>(0);
+  const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true);
   const isClient = useIsClient();
 
   if (!isClient) {
     return null; // or a loading indicator
   }
-  const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState<number>(0);
-  const [autoPaginationEnabled, setAutoPaginationEnabled] = useState(true);
-
   // Handle window resize events
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);

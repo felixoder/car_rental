@@ -18,15 +18,16 @@ const placesData = [
 ];
 
 const Places = (props: Props) => {
+ 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Handle window resize events
   const isClient = useIsClient();
 
   if (!isClient) {
     return null; // or a loading indicator
   }
-  const [currentPage, setCurrentPage] = useState(1);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  // Handle window resize events
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
 
